@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">TravelGo</string>
+    <string name="welcome_back">Welcome Back</string>
+    <string name="subtitle_login">Explore beautiful destinations</string>
+    <string name="username">Username / Email</string>
+    <string name="password">Password</string>
+    <string name="login">LOGIN</string>
+    <string name="discover">Discover</string>
+    <string name="new_destination">New Destination</string>
+    <string name="search_places">Search places...</string>
+    <string name="book_now">Book Now</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>
