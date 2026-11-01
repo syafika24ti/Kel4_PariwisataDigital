@@ -8,6 +8,5 @@ import com.example.kel4_pariwisatadigital.R
 
 class Tutorial2Fragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.fragment_tutorial_satu, container, false)
-    }
+        return inflater.inflate(R.layout.fragment_tutorial_dua, container, false)    }
 }

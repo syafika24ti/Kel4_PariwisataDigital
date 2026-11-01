@@ -57,7 +57,6 @@ class HomeFragment : Fragment() {
         }
     }
 
-    // Praktik yang baik: selalu set null binding di onDestroyView untuk mencegah kebocoran memori
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
