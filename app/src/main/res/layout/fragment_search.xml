@@ -1,51 +1,84 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/warm_cream">
+    android:background="@color/warm_cream"
+    android:orientation="vertical">
 
-    <!-- AppBar untuk Filter/Search (Modul 5) -->
-    <com.google.android.material.appbar.AppBarLayout
+    <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/warm_cream"
-        android:elevation="0dp">
+        android:layout_margin="20dp"
+        android:text="Cari Destinasi"
+        android:textColor="@color/forest_green"
+        android:textSize="26sp"
+        android:textStyle="bold" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
+    <!-- HorizontalScrollView agar ChipGroup bisa di-scroll ke samping -->
+    <HorizontalScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scrollbars="none"
+        android:paddingHorizontal="16dp"
+        android:paddingBottom="8dp">
+
+        <!-- Penerapan ChipGroup sesuai Modul 9 -->
+        <com.google.android.material.chip.ChipGroup
+            android:id="@+id/chipGroupFilter"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="20dp"
-            app:layout_scrollFlags="scroll|enterAlways">
+            app:singleLine="true"
+            app:singleSelection="true"
+            app:selectionRequired="true">
 
-            <TextView
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chipSemua"
+                style="@style/Widget.MaterialComponents.Chip.Filter"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Eksplorasi Destinasi"
-                android:textColor="@color/deep_charcoal"
-                android:textSize="22sp"
-                android:textStyle="bold" />
+                android:checked="true"
+                android:text="Semua" />
 
-            <TextView
-                android:id="@+id/tvTotalResult"
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chipAlam"
+                style="@style/Widget.MaterialComponents.Chip.Filter"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:text="10 Hasil Ditemukan"
-                android:textColor="@color/forest_green"
-                android:textStyle="bold" />
-        </LinearLayout>
-    </com.google.android.material.appbar.AppBarLayout>
+                android:text="Alam" />
 
-    <!-- ListView (Modul 7) menggunakan scrolling behavior dari Modul 5 -->
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chipPulau"
+                style="@style/Widget.MaterialComponents.Chip.Filter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Pulau" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chipKuliner"
+                style="@style/Widget.MaterialComponents.Chip.Filter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Kuliner" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chipHotel"
+                style="@style/Widget.MaterialComponents.Chip.Filter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Hotel" />
+
+        </com.google.android.material.chip.ChipGroup>
+    </HorizontalScrollView>
+
+    <!-- ListView bawaan TravelGO! -->
     <ListView
         android:id="@+id/lvDestinations"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:divider="@android:color/transparent"
         android:dividerHeight="0dp"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+        android:paddingHorizontal="20dp" />
 
-</androidx.coordinatorlayout.widget.CoordinatorLayout>
+</LinearLayout>

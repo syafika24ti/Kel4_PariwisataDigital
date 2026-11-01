@@ -5,5 +5,6 @@ data class DestinationModel(
     val location: String,
     val rating: String,
     val price: String,
-    val imageUrl: String
+    val imageUrl: String,
+    val category: String = "Semua" // Tambahan baru untuk filter ChipGroup
 )

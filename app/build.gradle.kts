@@ -29,7 +29,12 @@ dependencies {
     implementation("androidx.core:core-ktx:1.12.0")
     implementation("io.coil-kt:coil:2.5.0")
     implementation("com.github.bumptech.glide:glide:4.16.0")
-
+    // Tambahan Dependency Modul 9 Praktikum
+    implementation("androidx.gridlayout:gridlayout:1.0.0")
+    implementation("androidx.viewpager2:viewpager2:1.1.0")
+    implementation("com.tbuonomo:dotsindicator:5.1.0")
+    // Library DotsIndicator Modul 9
+    implementation("com.tbuonomo:dotsindicator:5.1.0")
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)

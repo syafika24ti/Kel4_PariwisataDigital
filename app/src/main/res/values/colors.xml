@@ -14,4 +14,7 @@
     <color name="sage_mist">#E8EFEA</color>
     <color name="deep_charcoal">#2D3142</color>
     <color name="gray">#8D99AE</color>
+    <!-- Warna khusus DotsIndicator (Modul 9) -->
+    <color name="abu_gelap">#424242</color>
+    <color name="dot_selected">#2E5C31</color>
 </resources>

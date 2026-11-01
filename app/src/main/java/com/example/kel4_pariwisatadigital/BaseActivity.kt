@@ -1,12 +1,12 @@
 package com.example.kel4_pariwisatadigital
 
+import AccountFragment
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.example.kel4_pariwisatadigital.databinding.ActivityBaseBinding
-import com.example.kel4_pariwisatadigital.fragment.AccountFragment
 import com.example.kel4_pariwisatadigital.fragment.MyPackFragment
-import com.example.travelgo.fragment.SearchFragment
+import com.example.kel4_pariwisatadigital.fragment.SearchFragment
 
 class BaseActivity : AppCompatActivity() {
 

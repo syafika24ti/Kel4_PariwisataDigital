@@ -21,14 +21,43 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // Membaca SharedPreferences di dalam Fragment (Modul 6 Latihan 5.1 & 5.2)
-        val sharedPref = requireContext().getSharedPreferences("user_pref", Context.MODE_PRIVATE)
-        val username = sharedPref.getString("username", "Traveler")
+        // 1. SharedPreferences (Modul 9): Cek apakah tutorial sudah pernah dilihat
+        val sharedPref = requireContext().getSharedPreferences("tutorial_pref", android.content.Context.MODE_PRIVATE)
+        val isTutorialSeen = sharedPref.getBoolean("is_tutorial_seen", false)
 
-        // Memasang nama ke UI
-        binding.tvGreeting.text = "Halo, $username!\nMau kemana hari ini?"
+        if (!isTutorialSeen) {
+            // Jika belum pernah lihat, paksa buka halaman Tutorial sekarang juga
+            val intent = android.content.Intent(requireContext(), com.example.kel4_pariwisatadigital.tutorial.TutorialTravelActivity::class.java)
+            startActivity(intent)
+        }
+
+        // 2. MenuProvider (Modul 9): Menambahkan ikon Info di Toolbar
+        requireActivity().addMenuProvider(object : androidx.core.view.MenuProvider {
+            override fun onCreateMenu(menu: android.view.Menu, menuInflater: android.view.MenuInflater) {
+                menuInflater.inflate(com.example.kel4_pariwisatadigital.R.menu.menu_info, menu)
+            }
+
+            override fun onMenuItemSelected(menuItem: android.view.MenuItem): Boolean {
+                return when (menuItem.itemId) {
+                    com.example.kel4_pariwisatadigital.R.id.action_info -> {
+                        // Buka tutorial saat ikon diklik
+                        val intent = android.content.Intent(requireContext(), com.example.kel4_pariwisatadigital.tutorial.TutorialTravelActivity::class.java)
+                        startActivity(intent)
+                        true
+                    }
+                    else -> false
+                }
+            }
+        }, viewLifecycleOwner, androidx.lifecycle.Lifecycle.State.RESUMED)
+
+        // 3. KODE KLIK PROFIL (Tombol Manual untuk membuka Tutorial)
+        binding.ivProfile.setOnClickListener {
+            val intent = android.content.Intent(requireContext(), com.example.kel4_pariwisatadigital.tutorial.TutorialTravelActivity::class.java)
+            startActivity(intent)
+        }
     }
 
+    // Praktik yang baik: selalu set null binding di onDestroyView untuk mencegah kebocoran memori
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
