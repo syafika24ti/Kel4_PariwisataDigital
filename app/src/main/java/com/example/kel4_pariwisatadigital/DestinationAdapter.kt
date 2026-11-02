@@ -1,6 +1,7 @@
 package com.example.kel4_pariwisatadigital
 
 import android.content.Context
+import android.content.Intent // Jangan lupa import Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -8,6 +9,7 @@ import android.widget.ArrayAdapter
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import com.bumptech.glide.Glide
+import com.example.kel4_pariwisatadigital.activity.DetailActivity
 import com.example.kel4_pariwisatadigital.databinding.ItemDestinationBinding
 import com.example.kel4_pariwisatadigital.model.DestinationModel
 
@@ -42,6 +44,16 @@ class DestinationAdapter(
             .load(data.imageUrl)
             .centerCrop()
             .into(binding.ivDestImage)
+
+        view.setOnClickListener {
+            // Pastikan "DetailActivity" adalah nama class halaman detail milikmu
+            val intent = Intent(context, DetailActivity::class.java)
+
+            // (Opsional) Jika kamu butuh mengirim data nama wisata ke halaman detail:
+            // intent.putExtra("EXTRA_NAME", data.name)
+
+            context.startActivity(intent)
+        }
 
         return view
     }
