@@ -1,7 +1,7 @@
 package com.example.kel4_pariwisatadigital
 
 import android.content.Context
-import android.content.Intent // Jangan lupa import Intent
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -46,11 +46,14 @@ class DestinationAdapter(
             .into(binding.ivDestImage)
 
         view.setOnClickListener {
-            // Pastikan "DetailActivity" adalah nama class halaman detail milikmu
             val intent = Intent(context, DetailActivity::class.java)
 
-            // (Opsional) Jika kamu butuh mengirim data nama wisata ke halaman detail:
-            // intent.putExtra("EXTRA_NAME", data.name)
+            // Membawa data destinasi yang diklik ke halaman Detail
+            intent.putExtra("EXTRA_NAME", data.name)
+            intent.putExtra("EXTRA_LOCATION", data.location)
+            intent.putExtra("EXTRA_RATING", data.rating.toString())
+            intent.putExtra("EXTRA_PRICE", data.price)
+            intent.putExtra("EXTRA_IMAGE", data.imageUrl)
 
             context.startActivity(intent)
         }

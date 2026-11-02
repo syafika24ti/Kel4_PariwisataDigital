@@ -27,9 +27,11 @@ class DetailActivity : AppCompatActivity() {
             setDisplayShowHomeEnabled(true)
             setHomeAsUpIndicator(R.drawable.ic_arrow_back)
         }
+
         binding.toolbar.setNavigationOnClickListener {
             finish()
         }
+
         // 2. Terima Data dari Intent (Modul 6)
         val destName = intent.getStringExtra("EXTRA_NAME") ?: "Nama Destinasi"
         val destLocation = intent.getStringExtra("EXTRA_LOCATION") ?: "Lokasi"
@@ -37,12 +39,13 @@ class DetailActivity : AppCompatActivity() {
         val destPrice = intent.getStringExtra("EXTRA_PRICE") ?: "Rp 0"
         val destImage = intent.getStringExtra("EXTRA_IMAGE")
 
-        // 3. Pasang data ke UI dengan ID yang baru
+        // 3. Pasang data ke UI XML
         binding.tvDetailName.text = destName
         binding.tvDetailLocation.text = destLocation
         binding.tvDetailRating.text = "⭐ $destRating"
         binding.tvDetailPrice.text = destPrice
 
+        // Load gambar menggunakan Glide
         Glide.with(this)
             .load(destImage)
             .centerCrop()
@@ -63,29 +66,30 @@ class DetailActivity : AppCompatActivity() {
         // 5. Fitur Booking (Buka Halaman WebView - Modul 5)
         binding.btnBooking.setOnClickListener {
             val intent = Intent(this, WebViewActivity::class.java)
+            // Mengirim URL ke WebViewActivity
             intent.putExtra("EXTRA_URL", "https://indonesia.travel")
             startActivity(intent)
         }
     }
 
-    // Aksi Tombol Back pada Toolbar
+    // Menampilkan menu di Toolbar (Ikon Share & Titik Tiga)
+    override fun onCreateOptionsMenu(menu: android.view.Menu?): Boolean {
+        menuInflater.inflate(R.menu.detail_menu, menu)
+        return true
+    }
+
+    // Aksi saat ikon menu di Toolbar diklik
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
-            // Aksi tombol Share
             R.id.action_share -> {
                 Toast.makeText(this, "Membagikan destinasi...", Toast.LENGTH_SHORT).show()
                 true
             }
-            // Aksi tombol About (Titik tiga)
             R.id.action_about -> {
                 Toast.makeText(this, "Aplikasi TravelGO! v1.0", Toast.LENGTH_SHORT).show()
                 true
             }
             else -> super.onOptionsItemSelected(item)
         }
-    }
-    override fun onCreateOptionsMenu(menu: android.view.Menu?): Boolean {
-        menuInflater.inflate(R.menu.detail_menu, menu)
-        return true
     }
 }
